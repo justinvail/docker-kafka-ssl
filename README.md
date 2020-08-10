@@ -12,6 +12,9 @@ Port 9094 is 2 ways SSL client authenticated and encrypted.
 * keytool
 * docker
 * docker-compose
+* kafka command line tools
+  
+      brew install kafka
 
 ## Setup Instructions
 
@@ -21,7 +24,11 @@ add to your /etc/hosts
 
 Generate the required certificates and keystores:
 
-    ./generate-docker-kafka-ssl-certs.sh
+    ./scripts/generate-kafka-ssl-certs.sh
+    
+Move client certificates and keystores to the appropriate locations:
+
+    ./scripts/moveCerts.sh
     
 Run Kafka and Zookeeper
 
@@ -41,34 +48,18 @@ subject=/C=US/ST=CA/L=Santa Clara/O=org/OU=org/CN=Sriharsha Chintalapani
 issuer=/C=US/ST=CA/L=Santa Clara/O=org/OU=org/CN=kafka/emailAddress=test@test.com
 ```
 
-## Generte some messages
+## Generte some messages and read them
     
-Pick the client of your choice
-
-### Local
-
 ```
-cd clients/local  
+cd client
+./local_consumer.sh
 ./local_producer.sh
-```
-
-### docker
-
-```
-cd clients/docker  
-./producer.sh
-```
-
-### node
-
-```
-cd clients/node
-npm i  
-node index.js
 ```
 
 
 ## Kafka implicit configurations
+This configuration is handled by the docker-compose.yml properties.
+The container server.properties reflects the properties below.
 
 ### Server
 
@@ -79,7 +70,6 @@ ssl.keystore.location=/var/private/ssl/kafka.server.keystore.jks
 ssl.keystore.password=kafkadocker
 ssl.key.password=kafkadocker
 ssl.client.auth=required
-
 ```
 
 ### Client
