@@ -48,7 +48,7 @@ subject=/C=US/ST=CA/L=Santa Clara/O=org/OU=org/CN=Sriharsha Chintalapani
 issuer=/C=US/ST=CA/L=Santa Clara/O=org/OU=org/CN=kafka/emailAddress=test@test.com
 ```
 
-## Generte some messages and read them
+## Produce and Consume some encrypted messages
     
 ```
 cd client
