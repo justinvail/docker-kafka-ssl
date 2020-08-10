@@ -1,11 +1,13 @@
 #!/bin/bash
 
 #move client certs to certs_client
+mkdir ../certs_client;
 mv -f ./sslcerts/docker.kafka.client.keystore.jks ../certs_client;
 mv -f ./sslcerts/docker.kafka.client.keystore.p12 ../certs_client;
 mv -f ./sslcerts/docker.kafka.client.truststore.jks ../certs_client;
 
 #move server certs to certs
+mkdir ../certs;
 mv -f ./sslcerts/ca-hw-cert ../certs;
 mv -f ./sslcerts/ca-hw-cert.srl ../certs;
 mv -f ./sslcerts/ca-hw-key ../certs;
