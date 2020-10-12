@@ -24,7 +24,7 @@ add to your /etc/hosts
 
 Generate the required certificates and keystores:
 
-    ./scripts/generate-kafka-ssl-certs.sh
+    ./scripts/generate_kafka_ssl_certs.sh
     
 Move client certificates and keystores to the appropriate locations:
 
